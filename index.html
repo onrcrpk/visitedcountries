@@ -72,12 +72,13 @@
 </head>
 <body>
     <div id="map-container">
-        <div id="total-countries">Total Countries: <span id="total-count">0</span></div>
         <div id="map"></div>
         <div id="selected-countries">
-            <h2>Visited Countries</h2>
+            <h2>Visited Countries (<span id="total-count">0</span>)</h2>
             <ul id="country-list"></ul>
         </div>
+        
+        
     </div>
 
     <!-- Leaflet JavaScript -->
@@ -173,14 +174,16 @@
         }
 
         function updateSelectedCountries() {
-            const countryListElement = document.getElementById('country-list');
-            const totalCountElement = document.getElementById('total-count');
-            const totalCountries = geojsonLayer.getLayers().length;
-            const percentage = ((selectedCountries.length / totalCountries) * 100).toFixed(2);
+    const countryListElement = document.getElementById('country-list');
+    const totalCountElement = document.getElementById('total-count');
+    const totalCountries = geojsonLayer.getLayers().length;
+    const percentage = ((selectedCountries.length / totalCountries) * 100).toFixed(2);
 
-            countryListElement.innerHTML = selectedCountries.map(country => `<li>${country}</li>`).join('');
-            totalCountElement.textContent = `${selectedCountries.length}/${totalCountries} (${percentage}%)`;
-        }
+    countryListElement.innerHTML = selectedCountries.map(country => `<li>${country}</li>`).join('');
+    totalCountElement.textContent = selectedCountries.length;
+}
+
+
     </script>
 </body>
 </html>
